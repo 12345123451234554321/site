@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset = "utf-16">
-    <title>Привет, мир!</title>
+    <meta charset="utf-16">
+    <title>������, ���!</title>
   </head>
   <body>
-    <h1>Привет, мир!</h1>
-    <p>Это веб-страница.</p>
+    <span id="cnt"></span>
+    <span id="per"></span>
+    <script>
+        function fn() {
+        
+        document.getElementById("per").innerHTML = (Math.round(((new Date()-new Date(2024, 0, 1, 0, 0, 0, 0))/(new Date(2025, 0, 1, 0, 0, 0, 0)-new Date(2024, 0, 1, 0, 0, 0, 0)))*100000000)/1000000) + " %"
+        document.getElementById("cnt").innerHTML = Math.round(new Date(2025, 0, 1, 0, 0, 0, 0)/1000 - new Date()/1000)
+        
+        }
+        setInterval(fn, 10)
+   </script>
  </body>
 </html>
