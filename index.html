@@ -1,20 +1,115 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="utf-16">
-    <title>������, ���!</title>
+    <meta charset="utf-8">
+    <style>
+        #fall {
+            background: OrangeRed;
+            text-align: center;
+            padding: 100px 0;
+            border: 2px solid black;
+            margin: 0 0 10px 0;
+        }
+        #winter {
+            background: LightBlue;
+            text-align: center;
+            padding: 100px 0;
+            border: 2px solid black;
+            margin: 0 0 10px 0;
+        }
+         #spring {
+            background: SpringGreen;
+            text-align: center;
+            padding: 100px 0;
+            border: 2px solid black;
+            margin: 0 0 10px 0;
+        }
+         #summer {
+            background: Gold;
+            text-align: center;
+            padding: 100px 0;
+            border: 2px solid black;
+            margin: 0 0 10px 0;
+        }
+    </style>
+    <title>Привет, мир!</title>
   </head>
   <body>
-    <span id="cnt"></span>
-    <span id="per"></span>
+    <div id = "fall">
+        <span id = "txtFall"></span> <span id="cntFall"></span> секунд<br/>
+        Прошло <span id="perFall"></span> процентов времени
+    </div>
+    <div id = "winter">
+         <span id = "txtWinter"></span> <span id="cntWinter"></span> секунд<br/>
+        Прошло <span id="perWinter"></span> процентов времени
+    </div>
+    <div id = "spring">
+        <span id = "txtSpring"></span> <span id="cntSpring"></span> секунд<br/>
+        Прошло <span id="perSpring"></span> процентов времени
+    </div>
+    <div id = "summer">
+        <span id = "txtSummer"></span><span id="cntSummer"></span> секунд<br/>
+        Прошло <span id="perSummer"></span> процентов времени
+    </div>
     <script>
         function fn() {
         
-        document.getElementById("per").innerHTML = (Math.round(((new Date()-new Date(2024, 0, 1, 0, 0, 0, 0))/(new Date(2025, 0, 1, 0, 0, 0, 0)-new Date(2024, 0, 1, 0, 0, 0, 0)))*100000000)/1000000) + " %"
-        document.getElementById("cnt").innerHTML = Math.round(new Date(2025, 0, 1, 0, 0, 0, 0)/1000 - new Date()/1000)
+          let now = new Date();
+          if (now.getMonth() > 7 && now.getMonth() < 11) {
+              let startFall = new Date(now.getFullYear(), 8, 1, 0, 0, 0, 0);
+              let endFall = new Date(now.getFullYear(), 11, 1, 0, 0, 0, 0);
+              document.getElementById("perFall").innerHTML = Math.round((now-startFall)/(endFall-startFall)*10000000)/100000;
+              document.getElementById("cntFall").innerHTML = Math.round(endFall/1000 - now/1000);
+              document.getElementById("txtFall").innerHTML = "Осень закончится через ";
+          } else {
+              let startFall = new Date((now.getFullYear() - 1), 11, 1, 0, 0, 0, 0);
+              let endFall = new Date(now.getFullYear(), 8, 1, 0, 0, 0, 0);
+              document.getElementById("perFall").innerHTML = Math.round((now-startFall)/(endFall-startFall)*100000000)/1000000;
+              document.getElementById("cntFall").innerHTML = Math.round(endFall/1000 - now/1000);
+              document.getElementById("txtFall").innerHTML = "Осень начнётся через ";
+          }
+          if (now.getMonth() > 10 && now.getMonth() < 2) {
+              let startWinter = new Date((now.getFullYear() - 1), 11, 1, 0, 0, 0, 0);
+              let endWinter = new Date(now.getFullYear(), 2, 1, 0, 0, 0, 0);
+              document.getElementById("perWinter").innerHTML = Math.round((now-startWinter)/(endWinter-startWinter)*10000000)/100000;
+              document.getElementById("cntWinter").innerHTML = Math.round(endWinter/1000 - now/1000);
+              document.getElementById("txtWinter").innerHTML = "Зима закончится через ";
+          } else {
+              let startWinter = new Date(now.getFullYear(), 2, 1, 0, 0, 0, 0);
+              let endWinter = new Date(now.getFullYear(), 11, 1, 0, 0, 0, 0);
+              document.getElementById("perWinter").innerHTML = Math.round((now-startWinter)/(endWinter-startWinter)*100000000)/1000000;
+              document.getElementById("cntWinter").innerHTML = Math.round(endWinter/1000 - now/1000);
+              document.getElementById("txtWinter").innerHTML = "Зима начнётся через ";
+          }
+          if (now.getMonth() > 1 && now.getMonth() < 5) {
+              let startSpring = new Date(now.getFullYear(), 2, 1, 0, 0, 0, 0);
+              let endSpring = new Date(now.getFullYear(), 5, 1, 0, 0, 0, 0);
+              document.getElementById("perSpring").innerHTML = Math.round((now-startSpring)/(endSpring-startSpring)*10000000)/100000;
+              document.getElementById("cntSpring").innerHTML = Math.round(endSpring/1000 - now/1000);
+              document.getElementById("txtSpring").innerHTML = "Весна закончится через ";
+          } else {
+              let startSpring = new Date(now.getFullYear(), 5, 1, 0, 0, 0, 0);
+              let endSpring = new Date((now.getFullYear() + 1), 2, 1, 0, 0, 0, 0);
+              document.getElementById("perSpring").innerHTML = Math.round((now-startSpring)/(endSpring-startSpring)*100000000)/1000000;
+              document.getElementById("cntSpring").innerHTML = Math.round(endSpring/1000 - now/1000);
+              document.getElementById("txtSpring").innerHTML = "Весна начнётся через ";
+          }
+          if (now.getMonth() > 4 && now.getMonth() < 8) {
+              let startSummer = new Date(now.getFullYear(), 5, 1, 0, 0, 0, 0);
+              let endSummer = new Date(now.getFullYear(), 8, 1, 0, 0, 0, 0);
+              document.getElementById("perSummer").innerHTML = Math.round((now-startSummer)/(endSummer-startSummer)*10000000)/100000;
+              document.getElementById("cntSummer").innerHTML = Math.round(endSummer/1000 - now/1000);
+              document.getElementById("txtSummer").innerHTML = "Лето закончится через "
+          } else {
+              let startWinter = new Date(now.getFullYear(), 2, 1, 0, 0, 0, 0);
+              let endWinter = new Date(now.getFullYear(), 11, 1, 0, 0, 0, 0);
+              document.getElementById("perSummer").innerHTML = Math.round((now-startSummer)/(endSummer-startSummer)*100000000)/1000000;
+              document.getElementById("cntSummer").innerHTML = Math.round(endSummer/1000 - now/1000);
+              document.getElementById("txtSummer").innerHTML = "Лето начнётся через "
+          }
         
         }
-        setInterval(fn, 10)
+        setInterval(fn, 10);
    </script>
  </body>
 </html>
